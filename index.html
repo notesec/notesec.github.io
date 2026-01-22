@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Notesec - Secure Notes, Fully Offline, Absolute Privacy</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Notesec is a secure encrypted notepad with anti-keylogger and screen capture protection.">
+
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://notesec.github.io/">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Notesec – Secure Encrypted Notepad">
+<meta property="og:description" content="Secure your notes with strong encryption and advanced protection.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://notesec.github.io/">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<style>
+:root{
+  --bg:#ffffff;
+  --soft:#f4f7fb;
+  --text:#1b1f2a;
+  --muted:#6b7280;
+  --accent:#2563eb;
+  --accent-soft:#e0ebff;
+  --border:#e5e7eb;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:"Inter","Segoe UI",system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+/* HEADER */
+header{
+  border-bottom:1px solid var(--border);
+}
+.header-inner{
+  max-width:1200px;
+  margin:auto;
+  padding:20px 24px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-size:22px;
+  font-weight:600;
+}
+.logo img{width:36px;height:36px}
+nav a{
+  margin-left:26px;
+  text-decoration:none;
+  color:var(--muted);
+  font-size:15px;
+  position:relative;
+  transition:color .2s ease;
+}
+nav a::after{
+  content:"";
+  position:absolute;
+  left:0;bottom:-6px;
+  width:0;height:2px;
+  background:var(--accent);
+  transition:width .25s ease;
+}
+nav a:hover{color:var(--accent)}
+nav a:hover::after{width:100%}
+
+/* HERO SPLIT */
+.hero{
+  max-width:1200px;
+  margin:80px auto 40px;
+  padding:0 24px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:center;
+}
+.hero h1{
+  font-size:44px;
+  line-height:1.2;
+  margin:0 0 20px;
+}
+.hero p{
+  font-size:17px;
+  color:var(--muted);
+  line-height:1.7;
+}
+.actions{
+  margin-top:32px;
+}
+.actions a{
+  display:inline-block;
+  padding:14px 30px;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:600;
+  margin-right:14px;
+}
+.btn-primary{
+  background:var(--accent);
+  color:white;
+  transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+}
+.btn-primary:hover{
+  background:#1d4ed8;
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px rgba(37,99,235,.25);
+}
+.btn-secondary{
+  background:var(--accent-soft);
+  color:var(--accent);
+  transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+}
+.btn-secondary:hover{
+  background:#d6e4ff;
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px rgba(37,99,235,.15);
+}
+
+.hero img{
+  width:100%;
+  border-radius:14px;
+  border:1px solid var(--border);
+}
+
+/* FEATURE STRIP */
+.strip{
+  background:var(--soft);
+  padding:70px 24px;
+}
+.strip-inner{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:30px;
+}
+.strip-item{
+  background:white;
+  padding:28px;
+  border-radius:14px;
+  border:1px solid var(--border);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.strip-item:hover{
+  transform:translateY(-4px);
+  box-shadow:0 12px 28px rgba(0,0,0,.08);
+}
+.strip-item h3{
+  margin-top:0;
+  font-size:18px;
+}
+.strip-item p{
+  font-size:14px;
+  color:var(--muted);
+  line-height:1.6;
+}
+
+/* INFO BLOCK */
+.info{
+  max-width:900px;
+  margin:90px auto;
+  padding:0 24px;
+  text-align:center;
+}
+.info h2{
+  font-size:34px;
+  margin-bottom:24px;
+}
+.info p{
+  font-size:17px;
+  color:var(--muted);
+  line-height:1.8;
+}
+
+/* DOWNLOAD */
+.download{
+  background:linear-gradient(180deg,#f9fbff,#eef4ff);
+  padding:80px 24px;
+}
+.download-inner{
+  max-width:900px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+}
+.box{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:36px;
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.box:hover{
+  transform:translateY(-4px);
+  box-shadow:0 14px 30px rgba(0,0,0,.08);
+}
+.box h3{
+  margin-top:0;
+}
+.box p{
+  color:var(--muted);
+}
+.box a{
+  display:inline-block;
+  margin-top:20px;
+  padding:14px 28px;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:600;
+}
+
+footer{
+  border-top:1px solid var(--border);
+  padding:32px 24px;
+  text-align:center;
+  font-size:13px;
+  color:var(--muted);
+}
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr}
+  .download-inner{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <img src="logo.png" alt="Notesec"> Notesec
+    </div>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#security">Security</a>
+      <a href="#buynow"><b><i>Buy Now</i></b></a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div>
+    <h1>Secure Notes. Fully Offline. Absolute Privacy.</h1>
+    <p>
+      Notesec is a Windows secure advance notepad designed to protect sensitive text document
+      from keyloggers, screen capture, and unauthorized access using layered encryption.
+    </p>
+    <p>Support Microsoft Windows <b>7/8/8.1/10 and 11</b></p>
+    <div class="actions">
+      <a href="Notesec_Setup.zip" class="btn-primary">Try for Windows 10/11</a>
+       <a href="Notesec_Setup_w7.zip" class="btn-primary">Try for Windows 7/8</a>
+    </div>
+  </div>
+  <div>
+    <img src="demo.PNG" alt="Notesec App Screenshot">
+  </div>
+</section>
+
+<section class="strip" id="features">
+  <div class="strip-inner">
+    <div class="strip-item">
+      <img src="img/encrypt.png">
+      <h3>Strong Encryption</h3>
+      <p>Every document is protected with password-based encryption and a unique random security layer.</p>
+    </div>
+    <div class="strip-item">
+      <img src="img/keylogger.png">
+      <h3>Anti-Keylogger</h3>
+      <p>Prevents malicious software from recording keystrokes while typing sensitive notes.</p>
+    </div>
+    <div class="strip-item">
+      <img src="img/capture.png">
+      <h3>Screen Capture Protection</h3>
+      <p>Blocks screenshot and screen recording attempts to keep your data private.</p>
+    </div>
+    <div class="strip-item">
+      <img src="img/ftp.png">
+      <h3>Secure FTP Upload</h3>
+      <p>Upload encrypted notes to your own FTP server safely. Files remain encrypted before, during, and after transfer.</p>
+    </div>
+  </div>
+</section>
+
+<section class="info" id="security">
+  <h2>Built for Windows Privacy</h2>
+  <p>
+    Notesec ensures your notes remain unreadable without the correct password.
+    Even if files are copied or stolen, their contents stay securely encrypted.
+  </p>
+</section>
+<section class="buynow" id="buynow">
+  <div class="download-inner">
+      <div class="box" id="buy">
+        <img src="img/singel.png">
+      <h3>Singel Device License</h3>
+      <p>Can only be used on 1 device.</p>
+      <a href="https://www.paypal.com/ncp/payment/BTX826ASTP8AN" target="_blank" class="btn-secondary">Buy Now</a>
+    </div>
+    <div class="box" id="buy">
+      <img src="img/multiple.png">
+      <h3>Multiple Device License</h3>
+      <p>Can be used on many devices.</p>
+      <a href="https://www.paypal.com/ncp/payment/XVVTHQQKEB5ZS" target="_blank" class="btn-secondary">Buy Now</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Notesec Labs. All Rights Reserved.
+</footer>
+
+</body>
+</html>
